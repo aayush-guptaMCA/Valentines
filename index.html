@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Be My Valentine? 💕</title>
+    <title>💕 Ek Important Sawaal Hai... 💕</title>
     <style>
         * {
             margin: 0;
@@ -22,7 +22,6 @@
             overflow-y: auto;
         }
 
-        /* Floating hearts */
         .heart {
             position: fixed;
             font-size: 30px;
@@ -33,20 +32,10 @@
         }
 
         @keyframes float {
-            0% {
-                transform: translateY(100vh) rotate(0deg) scale(0.5);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100vh) rotate(720deg) scale(1.2);
-                opacity: 0;
-            }
+            0% { transform: translateY(100vh) rotate(0deg) scale(0.5); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(720deg) scale(1.2); opacity: 0; }
         }
 
         .container {
@@ -56,7 +45,7 @@
             border-radius: 30px;
             box-shadow: 0 25px 80px rgba(255, 20, 147, 0.3);
             max-width: 92%;
-            width: 480px;
+            width: 520px;
             position: relative;
             z-index: 10;
             margin: 20px;
@@ -65,7 +54,7 @@
 
         h1 {
             color: #ff1493;
-            font-size: 2em;
+            font-size: 1.9em;
             margin-bottom: 10px;
             text-shadow: 2px 2px 4px rgba(255, 20, 147, 0.3);
             animation: titlePulse 2s ease-in-out infinite;
@@ -80,6 +69,41 @@
             color: #ff69b4;
             font-size: 0.95em;
             margin-bottom: 15px;
+            opacity: 0.9;
+        }
+
+        .countdown-container {
+            background: linear-gradient(135deg, #ff6b9d, #ff1493);
+            color: white;
+            padding: 15px;
+            border-radius: 15px;
+            margin: 15px 0;
+            box-shadow: 0 5px 20px rgba(255, 20, 147, 0.3);
+        }
+
+        .countdown-title {
+            font-size: 0.85em;
+            margin-bottom: 8px;
+            opacity: 0.9;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .countdown-item {
+            text-align: center;
+        }
+
+        .countdown-number {
+            font-size: 1.8em;
+            font-weight: bold;
+        }
+
+        .countdown-label {
+            font-size: 0.7em;
             opacity: 0.8;
         }
 
@@ -90,7 +114,7 @@
 
         .cat-image {
             width: 100%;
-            max-width: 240px;
+            max-width: 220px;
             height: auto;
             border-radius: 20px;
             margin: 10px auto;
@@ -110,7 +134,6 @@
             75% { transform: translateX(5px) rotate(2deg); }
         }
 
-        /* Tear drop animation */
         .tear {
             position: absolute;
             width: 8px;
@@ -121,15 +144,8 @@
             pointer-events: none;
         }
 
-        .tear.left {
-            left: 35%;
-            top: 45%;
-        }
-
-        .tear.right {
-            right: 35%;
-            top: 45%;
-        }
+        .tear.left { left: 35%; top: 45%; }
+        .tear.right { right: 35%; top: 45%; }
 
         .tear.falling {
             animation: tearFall 1s ease-in forwards;
@@ -141,28 +157,126 @@
             100% { opacity: 0; transform: translateY(60px); }
         }
 
-        .question {
-            font-size: 1.4em;
+        .speech-bubble {
+            background: #fff0f5;
+            border: 2px solid #ff69b4;
+            border-radius: 20px;
+            padding: 12px 18px;
+            margin: 15px auto;
+            max-width: 90%;
+            position: relative;
+            font-size: 0.95em;
             color: #ff1493;
-            margin: 20px 0 10px;
+            animation: bubblePop 0.5s ease;
+        }
+
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 10px 10px 0;
+            border-style: solid;
+            border-color: #ff69b4 transparent transparent;
+        }
+
+        @keyframes bubblePop {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .question {
+            font-size: 1.35em;
+            color: #ff1493;
+            margin: 15px 0 10px;
             font-weight: bold;
         }
 
-        /* Progress bar showing "love meter" */
+        /* Reasons Section */
+        .reasons-container {
+            background: linear-gradient(135deg, #fff0f5, #ffe4ec);
+            border-radius: 15px;
+            padding: 15px;
+            margin: 15px 0;
+            text-align: left;
+        }
+
+        .reasons-title {
+            color: #ff1493;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .reason-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px dashed #ffb6c1;
+            font-size: 0.85em;
+            color: #666;
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: all 0.3s ease;
+        }
+
+        .reason-item.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reason-item:last-child {
+            border-bottom: none;
+        }
+
+        .reason-emoji {
+            font-size: 1.3em;
+            margin-right: 10px;
+        }
+
+        /* Promise Section */
+        .promise-section {
+            display: none;
+            background: linear-gradient(135deg, #e8f5e9, #f1f8e9);
+            border-radius: 15px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .promise-section.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .promise-title {
+            color: #4caf50;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .promise-item {
+            font-size: 0.85em;
+            color: #666;
+            padding: 5px 0;
+        }
+
+        /* Love Meter */
         .love-meter {
-            width: 80%;
-            max-width: 250px;
-            height: 12px;
+            width: 85%;
+            max-width: 280px;
+            height: 14px;
             background: #ffe0e8;
             border-radius: 10px;
-            margin: 10px auto;
+            margin: 12px auto;
             overflow: hidden;
             box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
         }
 
         .love-meter-fill {
             height: 100%;
-            width: 0%;
+            width: 50%;
             background: linear-gradient(90deg, #ff6b9d, #ff1493, #ff69b4);
             border-radius: 10px;
             transition: width 0.5s ease;
@@ -171,7 +285,7 @@
         .love-meter-text {
             font-size: 0.8em;
             color: #ff69b4;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
 
         .button-container {
@@ -212,17 +326,11 @@
 
         .yes-btn:hover {
             transform: scale(1.15);
-            box-shadow: 0 12px 35px rgba(255, 20, 147, 0.5);
-        }
-
-        .yes-btn:active {
-            transform: scale(1.05);
         }
 
         .no-btn {
             background: linear-gradient(135deg, #a0a0a0, #c0c0c0);
             color: white;
-            transition: all 0.2s ease;
         }
 
         .no-btn.moving {
@@ -237,6 +345,13 @@
             0%, 100% { transform: rotate(0deg); }
             25% { transform: rotate(-3deg); }
             75% { transform: rotate(3deg); }
+        }
+
+        .maybe-btn {
+            background: linear-gradient(135deg, #ffd54f, #ffb300);
+            color: white;
+            padding: 10px 20px;
+            font-size: 0.9em;
         }
 
         .funny-text {
@@ -261,14 +376,38 @@
             100% { transform: scale(1); opacity: 1; }
         }
 
-        /* Attempt counter */
         .attempt-counter {
             font-size: 0.75em;
             color: #ccc;
             margin-top: 10px;
         }
 
-        /* Celebration styles */
+        /* Stage Indicator */
+        .stage-indicator {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin: 15px 0;
+        }
+
+        .stage-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #ffcdd2;
+            transition: all 0.3s ease;
+        }
+
+        .stage-dot.active {
+            background: #ff1493;
+            transform: scale(1.2);
+        }
+
+        .stage-dot.completed {
+            background: #4caf50;
+        }
+
+        /* Celebration */
         .celebration {
             display: none;
             text-align: center;
@@ -286,7 +425,7 @@
 
         .celebration h2 {
             color: #ff1493;
-            font-size: 1.9em;
+            font-size: 1.8em;
             margin-bottom: 15px;
             animation: celebratePulse 0.5s ease infinite;
         }
@@ -309,10 +448,10 @@
         }
 
         .celebration-message {
-            font-size: 1.15em;
+            font-size: 1.1em;
             color: #ff69b4;
             margin-bottom: 20px;
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
         .video-container {
@@ -320,7 +459,6 @@
             border-radius: 20px;
             overflow: hidden;
             background: linear-gradient(135deg, #ffe0ec, #ffd1ff);
-            max-width: 100%;
             padding: 10px;
         }
 
@@ -331,59 +469,75 @@
             object-fit: contain;
         }
 
-        /* Mobile Responsive */
+        /* Date Planner */
+        .date-planner {
+            display: none;
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .date-planner.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .date-title {
+            color: #1976d2;
+            font-size: 1em;
+            margin-bottom: 15px;
+        }
+
+        .date-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .date-option {
+            background: white;
+            border: 2px solid #90caf9;
+            border-radius: 10px;
+            padding: 15px 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .date-option:hover {
+            background: #e3f2fd;
+            transform: scale(1.05);
+        }
+
+        .date-option.selected {
+            background: #bbdefb;
+            border-color: #1976d2;
+        }
+
+        .date-emoji {
+            font-size: 2em;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .date-text {
+            font-size: 0.8em;
+            color: #666;
+        }
+
+        /* Mobile */
         @media (max-width: 500px) {
             .container {
                 padding: 25px 18px;
                 width: 96%;
-                margin: 15px 10px;
             }
-
-            h1 {
-                font-size: 1.6em;
-            }
-
-            .cat-image {
-                max-width: 180px;
-            }
-
-            .question {
-                font-size: 1.2em;
-            }
-
-            .btn {
-                padding: 14px 28px;
-                font-size: 1em;
-            }
-
-            .button-container {
-                min-height: 130px;
-                padding: 20px 10px;
-            }
-
-            .celebration h2 {
-                font-size: 1.5em;
-            }
-
-            .celebration-emoji {
-                font-size: 3em;
-            }
-        }
-
-        /* Extra small screens */
-        @media (max-width: 360px) {
-            .container {
-                padding: 20px 12px;
-            }
-
-            h1 {
-                font-size: 1.4em;
-            }
-
-            .btn {
-                padding: 12px 22px;
-                font-size: 0.95em;
-            }
+            h1 { font-size: 1.5em; }
+            .cat-image { max-width: 160px; }
+            .question { font-size: 1.15em; }
+            .btn { padding: 14px 28px; font-size: 1em; }
+            .countdown-number { font-size: 1.4em; }
+            .date-options { grid-template-columns: 1fr 1fr; }
         }
     </style>
 </head>
@@ -392,55 +546,162 @@
 
     <div class="container">
         <div id="question-section">
-            <h1>💕 Valentine's Day 💕</h1>
-            <p class="subtitle">A very important question awaits...</p>
-            
+            <h1>💕 Ek Zaroori Baat Hai... 💕</h1>
+            <p class="subtitle">Dhyan se padhna, bohot important hai! 🥺</p>
+
+            <!-- Valentine's Countdown -->
+            <div class="countdown-container">
+                <div class="countdown-title">💝 Valentine's Day tak sirf:</div>
+                <div class="countdown" id="countdown">
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="days">--</div>
+                        <div class="countdown-label">Din</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="hours">--</div>
+                        <div class="countdown-label">Ghante</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="minutes">--</div>
+                        <div class="countdown-label">Minute</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="seconds">--</div>
+                        <div class="countdown-label">Second</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stage Indicator -->
+            <div class="stage-indicator">
+                <div class="stage-dot active" id="stage1"></div>
+                <div class="stage-dot" id="stage2"></div>
+                <div class="stage-dot" id="stage3"></div>
+                <div class="stage-dot" id="stage4"></div>
+            </div>
+
             <div class="cat-container">
                 <img src="download.jpg" alt="Cute Cat" class="cat-image" id="catImage">
                 <div class="tear left" id="tearLeft"></div>
                 <div class="tear right" id="tearRight"></div>
             </div>
-            
-            <p class="question">Will you be my Valentine? 🥺</p>
-            
-            <!-- Love Meter -->
+
+            <div class="speech-bubble" id="speechBubble">
+                Haan haan, thoda nervous hoon... but tumse kuch kehna hai! 👉👈
+            </div>
+
+            <!-- Reasons to Say Yes -->
+            <div class="reasons-container" id="reasonsContainer">
+                <div class="reasons-title">✨ Reasons Why You Should Say Yes ✨</div>
+                <div class="reason-item" id="reason1">
+                    <span class="reason-emoji">🍕</span>
+                    <span>Pizza ka last slice tumhe dunga (kabhi kabhi)</span>
+                </div>
+                <div class="reason-item" id="reason2">
+                    <span class="reason-emoji">📱</span>
+                    <span>Tumhare boring reels pe bhi ❤️ karunga</span>
+                </div>
+                <div class="reason-item" id="reason3">
+                    <span class="reason-emoji">🎬</span>
+                    <span>Movie mein tumhari choice chalegi (mostly)</span>
+                </div>
+                <div class="reason-item" id="reason4">
+                    <span class="reason-emoji">😴</span>
+                    <span>Neend mein bhi goodnight ka reply karunga</span>
+                </div>
+                <div class="reason-item" id="reason5">
+                    <span class="reason-emoji">🤝</span>
+                    <span>Tumhari bestie ko bhi tolerate karunga</span>
+                </div>
+            </div>
+
+            <!-- Promise Section (appears after some No clicks) -->
+            <div class="promise-section" id="promiseSection">
+                <div class="promise-title">🤞 Pakka Promise:</div>
+                <div class="promise-item">✅ Tumhare saath photos mein smile karunga</div>
+                <div class="promise-item">✅ "Kuch nahi" ka matlab samjhunga (try karunga)</div>
+                <div class="promise-item">✅ Tumhare parents ke saamne seedha rahunga</div>
+                <div class="promise-item">✅ Ladai ke baad pehle sorry bolunga</div>
+            </div>
+
+            <p class="question" id="mainQuestion">Toh... Will You Be My Valentine? 🥺💕</p>
+
             <div class="love-meter">
                 <div class="love-meter-fill" id="loveMeterFill"></div>
             </div>
-            <p class="love-meter-text" id="loveMeterText">Love Meter: 0%</p>
-            
+            <p class="love-meter-text" id="loveMeterText">Pyaar Meter: 50% (Badhao na! 🥺)</p>
+
             <div class="button-container" id="buttonContainer">
-                <button class="btn yes-btn" id="yesBtn" onclick="sayYes()">Yes! 💖</button>
-                <button class="btn no-btn" id="noBtn">No 😢</button>
+                <button class="btn yes-btn" id="yesBtn" onclick="sayYes()">Haan Ji! 💖</button>
+                <button class="btn no-btn" id="noBtn">Nahi 😢</button>
             </div>
-            
+            <button class="btn maybe-btn" id="maybeBtn" onclick="sayMaybe()">Sochna padega... 🤔</button>
+
             <p class="funny-text" id="funnyText"></p>
             <p class="attempt-counter" id="attemptCounter"></p>
         </div>
 
         <div id="celebration" class="celebration">
-            <h2>Yay! You said YES! 🎉</h2>
+            <h2>YAAAY! 🎉💕🎉</h2>
             <span class="celebration-emoji">🥰</span>
             <p class="celebration-message">
-                I knew you couldn't resist! 💖<br>
-                You just made me the happiest person! 😊
+                Main jaanta tha tum maan jaogi! 💖<br>
+                Ab official hai - Hum Valentine hai! 😍<br>
+                <small>(Screenshot lelo, mukarna mat! 📸)</small>
             </p>
-            
-            <div class="video-container">
-    <video autoplay loop muted playsinline>
-        <source src="WhatsApp Video 2026-02-03 at 10.59.14 PM.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-</div>
 
+            <!-- Date Planner -->
+            <div class="date-planner show" id="datePlanner">
+                <div class="date-title">🗓️ Valentine's Day pe kya karein?</div>
+                <div class="date-options">
+                    <div class="date-option" onclick="selectDate(this)">
+                        <span class="date-emoji">🍿</span>
+                        <span class="date-text">Movie Date</span>
+                    </div>
+                    <div class="date-option" onclick="selectDate(this)">
+                        <span class="date-emoji">🍕</span>
+                        <span class="date-text">Food Date</span>
+                    </div>
+                    <div class="date-option" onclick="selectDate(this)">
+                        <span class="date-emoji">🌅</span>
+                        <span class="date-text">Long Drive</span>
+                    </div>
+                    <div class="date-option" onclick="selectDate(this)">
+                        <span class="date-emoji">🏠</span>
+                        <span class="date-text">Netflix & Chill</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="video-container">
+                <video autoplay loop muted playsinline>
+                    <source src="WhatsApp Video 2026-02-03 at 10.59.14 PM.mp4" type="video/mp4">
+                </video>
+            </div>
         </div>
     </div>
 
     <script>
+        // Countdown to Valentine's Day
+        function updateCountdown() {
+            const valentine = new Date('February 14, 2026 00:00:00').getTime();
+            const now = new Date().getTime();
+            const diff = valentine - now;
+
+            if (diff > 0) {
+                document.getElementById('days').textContent = Math.floor(diff / (1000 * 60 * 60 * 24));
+                document.getElementById('hours').textContent = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                document.getElementById('minutes').textContent = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                document.getElementById('seconds').textContent = Math.floor((diff % (1000 * 60)) / 1000);
+            }
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
         // Create floating hearts
         function createHearts() {
             const heartsContainer = document.getElementById('hearts');
-            const heartEmojis = ['💕', '💗', '💖', '❤️', '💓', '💘', '💝'];
+            const heartEmojis = ['💕', '💗', '💖', '❤️', '💓', '💘', '💝', '🌹'];
             for (let i = 0; i < 20; i++) {
                 const heart = document.createElement('div');
                 heart.className = 'heart';
@@ -454,8 +715,16 @@
         }
         createHearts();
 
+        // Show reasons one by one
+        setTimeout(() => document.getElementById('reason1').classList.add('show'), 500);
+        setTimeout(() => document.getElementById('reason2').classList.add('show'), 1000);
+        setTimeout(() => document.getElementById('reason3').classList.add('show'), 1500);
+        setTimeout(() => document.getElementById('reason4').classList.add('show'), 2000);
+        setTimeout(() => document.getElementById('reason5').classList.add('show'), 2500);
+
         const noBtn = document.getElementById('noBtn');
         const yesBtn = document.getElementById('yesBtn');
+        const maybeBtn = document.getElementById('maybeBtn');
         const funnyText = document.getElementById('funnyText');
         const buttonContainer = document.getElementById('buttonContainer');
         const catImage = document.getElementById('catImage');
@@ -464,41 +733,51 @@
         const loveMeterFill = document.getElementById('loveMeterFill');
         const loveMeterText = document.getElementById('loveMeterText');
         const attemptCounter = document.getElementById('attemptCounter');
-        
+        const speechBubble = document.getElementById('speechBubble');
+
         let moveCount = 0;
         let yesScale = 1;
-        let lovePercent = 0;
+        let lovePercent = 50;
+        let promiseShown = false;
 
-        // Funnier messages - more personalized and playful
+        // Hinglish funny messages
         const funnyMessages = [
-            "Wait, what? Try again! 🤔",
-            "The cat just gasped! 😱",
-            "Error 404: 'No' not found! 🖥️",
-            "Did your finger slip? 😏",
-            "The button is scared of you now! 😨",
-            "I'll share my fries with you! 🍟",
-            "Even the button thinks you should say Yes! 💭",
-            "My therapist will hear about this! 😤",
-            "The cat is judging you! 🐱",
-            "Netflix and... say Yes? 📺",
-            "I promise to laugh at your jokes! 😂",
-            "*sad music plays* 🎻",
-            "The Yes button is getting jealous! 💔",
-            "Button.exe has stopped working! 🔄",
-            "You're running out of Nos! ⚠️",
-            "Fine, I'll just sit here... CRYING! 😭",
-            "Plot twist: Just say Yes! 📖",
-            "The universe wants you to click Yes! ✨",
-            "My pet goldfish believes in us! 🐟",
-            "PLEASE I'M BEGGING! 🙏"
+            "Arrey yaar, galti se touch ho gaya kya? 🤔",
+            "Billi ro padegi! 😿 Dekho usse!",
+            "Error 404: 'Nahi' option available nahi hai! 🖥️",
+            "Finger slip ho gaya? Hota hai, koi baat nahi 😏",
+            "Button dar gaya tumse! 😨",
+            "Promise - Momos khilaunga! 🥟",
+            "Yaar please, mummy ne bola hai haan bolne ko! 👩",
+            "Main ro dunga sachchi mein! 😤",
+            "Billi judge kar rahi hai tumhe! 🐱",
+            "Chal na yaar, Valentine's pe akele boring hai! 😭",
+            "Tumhare PJs pe bhi hasunga pakka! 😂",
+            "*sad violin music* 🎻",
+            "Yes button jealous ho raha hai! 💔",
+            "Itna bhi mat tadpao! 🙏",
+            "Meri crush thi tum, ab reject mat karo! 💕",
+            "Accha theek hai, main toh yaheen rahunga... ROTE HUE! 😭",
+            "Plot twist: Just say Haan! 📖",
+            "Stars bhi keh rahe hain Yes bolo! ✨",
+            "Mere dil ki dhadkan sun lo! 💓",
+            "PLEASE YAAR BADI MEHNAT SE BANAYA HAI YE! 🙏😭"
         ];
 
-        // Cat crying animation
+        const speechBubbleTexts = [
+            "Haan haan, thoda nervous hoon... 👉👈",
+            "Kya matlab No? 😱 Suno toh sahi!",
+            "Aisa mat karo please! 🥺",
+            "Mujhe laga tha pyaar hai humara... 💔",
+            "Ek aur chance do na! 😢",
+            "Main change ho jaunga/jaaungi pakka! 🤞",
+            "Tumhare bina Valentine's kaise? 😭",
+            "Last time pooch raha/rahi hoon... (nahi actually aur bhi pooochunga 😬)"
+        ];
+
         function makeCatCry() {
             catImage.classList.add('sad');
             setTimeout(() => catImage.classList.remove('sad'), 500);
-            
-            // Tear animation
             tearLeft.classList.add('falling');
             tearRight.classList.add('falling');
             setTimeout(() => {
@@ -507,22 +786,25 @@
             }, 1000);
         }
 
+        function updateSpeechBubble() {
+            const index = Math.min(moveCount, speechBubbleTexts.length - 1);
+            speechBubble.textContent = speechBubbleTexts[index];
+            speechBubble.style.animation = 'none';
+            setTimeout(() => speechBubble.style.animation = 'bubblePop 0.5s ease', 10);
+        }
+
         function moveButton() {
             const container = buttonContainer;
-            
-            // Make No button absolute positioned after first move
+
             if (!noBtn.classList.contains('moving')) {
                 noBtn.classList.add('moving');
             }
 
-            // Calculate safe boundaries
             const maxX = container.offsetWidth - noBtn.offsetWidth - 10;
             const maxY = container.offsetHeight - noBtn.offsetHeight - 10;
 
-            // Random position
             let newX = Math.random() * Math.max(maxX, 60);
             let newY = Math.random() * Math.max(maxY, 40);
-
             newX = Math.max(5, Math.min(newX, maxX));
             newY = Math.max(5, Math.min(newY, maxY));
 
@@ -530,101 +812,89 @@
             noBtn.style.top = newY + 'px';
 
             moveCount++;
-
-            // Update attempt counter
-            attemptCounter.textContent = `Escape attempts: ${moveCount}`;
+            attemptCounter.textContent = `Bhagne ki koshish: ${moveCount} 🏃`;
 
             // Show funny message
-            if (moveCount <= funnyMessages.length) {
-                funnyText.textContent = funnyMessages[moveCount - 1];
-                funnyText.classList.remove('show');
-                setTimeout(() => funnyText.classList.add('show'), 50);
-            } else {
-                // Random message after exhausting the list
-                funnyText.textContent = funnyMessages[Math.floor(Math.random() * funnyMessages.length)];
-                funnyText.classList.remove('show');
-                setTimeout(() => funnyText.classList.add('show'), 50);
-            }
+            const msgIndex = (moveCount - 1) % funnyMessages.length;
+            funnyText.textContent = funnyMessages[msgIndex];
+            funnyText.classList.remove('show');
+            setTimeout(() => funnyText.classList.add('show'), 50);
 
-            // Update love meter (increases with each No attempt)
-            lovePercent = Math.min(lovePercent + 5, 99);
+            // Update love meter
+            lovePercent = Math.min(lovePercent + 3, 99);
             loveMeterFill.style.width = lovePercent + '%';
-            loveMeterText.textContent = `Love Meter: ${lovePercent}% (So close!)`;
+            loveMeterText.textContent = `Pyaar Meter: ${lovePercent}% (Bas thoda aur! 💕)`;
 
-            // Make Yes button grow
-            yesScale += 0.06;
+            // Grow Yes button
+            yesScale += 0.05;
             yesBtn.style.transform = `scale(${Math.min(yesScale, 2)})`;
 
-            // Cat reacts
             makeCatCry();
+            updateSpeechBubble();
 
-            // Change No button text and make it panic
-            if (moveCount === 3) {
-                noBtn.textContent = "No? 🤨";
-            } else if (moveCount === 5) {
-                noBtn.textContent = "Still No? 😰";
-                noBtn.style.fontSize = "0.95em";
-            } else if (moveCount === 7) {
-                noBtn.classList.add('panicking');
-                noBtn.textContent = "Really?! 😱";
-            } else if (moveCount === 10) {
-                noBtn.textContent = "Please? 🥺";
-                noBtn.style.padding = "12px 22px";
-            } else if (moveCount === 13) {
-                noBtn.textContent = "Fine! 😤";
-                noBtn.style.padding = "10px 18px";
-            } else if (moveCount === 15) {
-                noBtn.textContent = "😭";
-                noBtn.style.padding = "8px 14px";
-            } else if (moveCount >= 18) {
-                noBtn.textContent = "🏃💨";
-                noBtn.style.padding = "6px 10px";
-                noBtn.style.fontSize = "0.8em";
+            // Update stages
+            if (moveCount >= 3) document.getElementById('stage2').classList.add('active');
+            if (moveCount >= 6) document.getElementById('stage3').classList.add('active');
+            if (moveCount >= 10) document.getElementById('stage4').classList.add('active');
+
+            // Show promise section after 5 attempts
+            if (moveCount === 5 && !promiseShown) {
+                document.getElementById('promiseSection').classList.add('show');
+                promiseShown = true;
+            }
+
+            // Change No button text
+            if (moveCount === 3) noBtn.textContent = "Pakka No? 🤨";
+            else if (moveCount === 5) { noBtn.textContent = "Abhi bhi No? 😰"; noBtn.style.fontSize = "0.95em"; }
+            else if (moveCount === 7) { noBtn.classList.add('panicking'); noBtn.textContent = "Sachchi?! 😱"; }
+            else if (moveCount === 10) { noBtn.textContent = "Please? 🥺"; noBtn.style.padding = "12px 22px"; }
+            else if (moveCount === 13) { noBtn.textContent = "Yaar! 😤"; noBtn.style.padding = "10px 18px"; }
+            else if (moveCount === 15) { noBtn.textContent = "😭"; noBtn.style.padding = "8px 14px"; }
+            else if (moveCount >= 18) { noBtn.textContent = "🏃💨"; noBtn.style.padding = "6px 10px"; }
+        }
+
+        function sayMaybe() {
+            maybeBtn.style.display = 'none';
+            funnyText.textContent = "Sochna kya hai?! Dil ki suno! 💕";
+            funnyText.classList.add('show');
+
+            // Increase love meter
+            lovePercent = Math.min(lovePercent + 10, 85);
+            loveMeterFill.style.width = lovePercent + '%';
+            loveMeterText.textContent = `Pyaar Meter: ${lovePercent}% (Hmm... progress! 😏)`;
+        }
+
+        function selectDate(element) {
+            document.querySelectorAll('.date-option').forEach(opt => opt.classList.remove('selected'));
+            element.classList.add('selected');
+
+            // Create extra celebration
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => createConfetti(), i * 50);
             }
         }
 
-        // Desktop: Mouse events
         noBtn.addEventListener('mouseenter', moveButton);
-
-        // Mobile: Touch events
         noBtn.addEventListener('touchstart', function(e) {
             e.preventDefault();
             moveButton();
         }, { passive: false });
 
-        // Desktop: Proximity detection
         document.addEventListener('mousemove', (e) => {
             if (!noBtn.classList.contains('moving')) return;
-            
             const btnRect = noBtn.getBoundingClientRect();
             const centerX = btnRect.left + btnRect.width / 2;
             const centerY = btnRect.top + btnRect.height / 2;
-            
-            const distance = Math.sqrt(
-                Math.pow(e.clientX - centerX, 2) + 
-                Math.pow(e.clientY - centerY, 2)
-            );
-
-            if (distance < 70) {
-                moveButton();
-            }
+            const distance = Math.sqrt(Math.pow(e.clientX - centerX, 2) + Math.pow(e.clientY - centerY, 2));
+            if (distance < 70) moveButton();
         });
 
         function sayYes() {
             document.getElementById('question-section').style.display = 'none';
             document.getElementById('celebration').classList.add('active');
-            
-            // Epic confetti celebration
-            for (let i = 0; i < 80; i++) {
+            for (let i = 0; i < 100; i++) {
                 setTimeout(() => createConfetti(), i * 40);
             }
-
-            // Play celebration sound if available
-            try {
-                const audio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2teleVAaG5mD');
-                audio.volume = 0.3;
-                audio.play().catch(() => {});
-            } catch(e) {}
         }
 
         function createConfetti() {
@@ -635,18 +905,13 @@
             confetti.style.fontSize = (18 + Math.random() * 25) + 'px';
             confetti.style.zIndex = '1000';
             confetti.style.pointerEvents = 'none';
-            confetti.innerHTML = ['💕', '💖', '💗', '💓', '💝', '🎉', '✨', '🥰', '😍', '💐', '🌹', '💘', '🎊'][Math.floor(Math.random() * 13)];
+            confetti.innerHTML = ['💕', '💖', '💗', '💓', '💝', '🎉', '✨', '🥰', '😍', '💐', '🌹', '💘', '🎊', '🥳'][Math.floor(Math.random() * 14)];
             confetti.style.transition = 'all 3.5s ease-out';
             document.body.appendChild(confetti);
-            
-            const rotation = Math.random() * 1080 - 540;
-            const drift = Math.random() * 200 - 100;
-            
             setTimeout(() => {
                 confetti.style.top = '110vh';
-                confetti.style.transform = `rotate(${rotation}deg) translateX(${drift}px)`;
+                confetti.style.transform = `rotate(${Math.random() * 1080 - 540}deg) translateX(${Math.random() * 200 - 100}px)`;
             }, 50);
-            
             setTimeout(() => confetti.remove(), 4000);
         }
     </script>
